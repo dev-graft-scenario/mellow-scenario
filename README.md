@@ -40,7 +40,7 @@
 **개발환경**
 |Name | Desc|
 |:---|:---|
-|Architecture | Hexnagonal |
+|Architecture | Hexagonal |
 |DB| H2 |
 
 **기본 의존성**
@@ -55,77 +55,7 @@
 
 ## Schemas
 
-### 사용자 정보(user/users)
-
-| Column Name  | Data Type | Description               |
-|:-------------|:----------|:--------------------------|
-| id           | Long      | 사용자의 고유 식별자 (Primary Key) |
-| email        | String    | 사용자의 이메일 주소 (Unique)      |
-| password     | String    | 사용자의 비밀번호 (암호화된 형태로 저장)   |
-| name         | String    | 사용자의 이름                   |
-| phone_number | String    | 사용자의 전화번호                 |
-| created_at   | DateTime  | 계정 생성 날짜                  |
-| updated_at   | DateTime  | 계정 정보 수정 날짜               |
-
-
-### 상품 정보(product/products)
-
-| Column Name | Data Type | Description                                 |
-|:------------|:----------|:--------------------------------------------|
-| name        | String    | 상품 이름                                       |
-| category_id | Long      | 상품 카테고리 ID (Foreign Key, 참조: categories.id) |
-| price       | Decimal   | 상품 가격                                       |
-| description | Text      | 상품 설명                                       |
-| image_url   | String    | 상품 이미지 URL                                  |
-| created_at  | DateTime  | 상품 등록 날짜                                    |
-| updated_at  | DateTime  | 상품 정보 수정 날짜                                 |
-
-### 상품 카테고리(category/categories)
-
-| Column Name | Data Type | Description                |
-|:------------|:----------|:---------------------------|
-| id          | Long      | 카테고리의 고유 식별자 (Primary Key) |
-| name        | String    | 카테고리 이름                    |
-
-### 주문 정보(order/orders)
-
-| Column Name  | Data Type | Description                             |
-|:-------------|:----------|:----------------------------------------|
-| id           | Long      | 주문의 고유 식별자 (Primary Key)                |
-| user_id      | Long      | 주문한 사용자의 ID (Foreign Key, 참조: users.id) |
-| order_status | String    | 주문 상태 (예: 결제 완료, 배송 중, 배송 완료)           |
-| total_price  | Decimal   | 주문의 총 가격                                |
-| created_at   | DateTime  | 주문 생성 날짜                                |
-| updated_at   | DateTime  | 주문 정보 수정 날짜                             |
-
-### 주문 상품 정보(order_item/order_items)
-
-| Column Name | Data Type | Description                           |
-|:------------|:----------|:--------------------------------------|
-| id          | Long      | 주문 상품의 고유 식별자 (Primary Key)           |
-| order_id    | Long      | 주문 정보 ID (Foreign Key, 참조: orders.id) |
-| product_id  | Long      | 상품 ID (Foreign Key, 참조: products.id)  |
-| quantity    | Integer   | 주문 상품의 수량                             |
-| price       | Decimal   | 주문 상품의 가격                             |
-
-###상품 후기 (review/reviews)
-
-| Column Name | Data Type | Description                                 |
-|:------------|:----------|:--------------------------------------------|
-| id          | Long      | 후기의 고유 식별자 (Primary Key)                    |
-| user_id     | Long      | 후기 작성자의 사용자 ID (Foreign Key, 참조: users.id)  |
-| product_id  | Long      | 후기 대상 상품의 ID (Foreign Key, 참조: products.id) |
-| rating      | Integer   | 사용자가 부여한 상품 평점 (1-5)                        |
-| content     | Text      | 후기 내용                                       |
-| created_at  | DateTime  | 후기 작성 날짜                                    |
-
-### 장바구니 상품 정보 (cart_item/cart_items)
-| Column Name | Data Type | Description                                 |
-|:------------|:----------|:--------------------------------------------|
-| id          | Long      | 장바구니 상품의 고유 식별자 (Primary Key)               |
-| user_id     | Long      | 장바구니 주인의 사용자 ID (Foreign Key, 참조: users.id) |
-| product_id  | Long      | 상품 ID (Foreign Key, 참조: products.id)        |
-| quantity    | Integer   | 장바구니 상품의 수량                                 |
+![image](https://user-images.githubusercontent.com/22608825/230723516-2f7d4d1f-fc1a-442f-adc1-49755d1a8633.png)
 
 ## Goals
 - ✅ 멀티 모듈 구조 학습
