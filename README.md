@@ -1,101 +1,59 @@
 # Mellow
 
-온라인 의류 쇼핑몰 개발 의뢰가 들어왔습니다!
+온라인 의류 쇼핑몰 개발 의뢰가 들어왔습니다.  
+우리가 만들 서비스의 이름은 **[Mellow]** 다양한 카테고리로 구분된 의류를 판매하려 합니다.  
+사용자는 원하는 의류를 검색하고, 장바구니에 추가하고, 결제 과정을 통해 구매를 완료할 수 있습니다.  
 
-우리가 만들 서비스의 이름은 **[Mellow]** 다양한 카테고리로 구분된 의류를 판매하려 합니다!
 
-## 시나리오
-**사용자 인증**
-- 회원가입: 사용자는 회원가입 절차를 거쳐 쇼핑몰에 가입할 수 있습니다.
-- 로그인: 가입한 사용자는 아이디와 패스워드를 사용해 로그인을 할 수 있습니다.
+## 🎭 시나리오
 
-**의류 상품 관리**
-- 의류 상품 검색: 사용자는 검색어를 입력하여 관심있는 의류 상품을 검색할 수 있습니다.
-- 카테고리별 의류 상품 목록 조회: 사용자는 카테고리별로 의류 상품 목록을 조회할 수 있습니다.
-- 의류 상품 상세 정보 조회: 사용자는 의류 상품의 상세 정보를 조회할 수 있습니다.
+**Case-1**
+```
+사용자 A는 겨울용 코트를 구매하고 싶습니다.  
+쇼핑몰에서 "겨울 코트"를 검색하여 원하는 상품을 찾습니다.  
+A는 상품 정보를 확인한 뒤, M 사이즈의 "브라운 롱 코트"를 장바구니에 추가합니다.  
+장바구니를 확인한 후 결제 페이지로 이동하여 주문을 완료합니다.  
+결제가 성공적으로 완료되면, A는 주문 내역에서 주문한 상품의 상태를 확인합니다.  
+```
 
+## 📚 전제 조건
+
+- 🍀 사용자 계정이 존재해야 합니다.
+  - 회원가입과 로그인 기능은 구현된 상태로 가정합니다.
+- 🍀 상품 데이터는 서비스 초기 상태로 제공됩니다.
+  - 상품 등록 및 수정 기능은 없으며, 데이터는 고정되어 있습니다.
+- 🍀 결제 API는 가상으로 동작한다고 가정하며, 결제 성공 또는 실패 응답만 제공합니다.
+
+
+## ⛳ Goals
+
+- ✅ 사용자는 의류를 검색하고, 장바구니에 추가하며, 결제까지 완료할 수 있어야 합니다.
+- ✅ 사용자는 결제 완료 후 주문 내역을 확인할 수 있어야 합니다.
+- ✅ 상품은 카테고리별로 분류되어 탐색이 가능해야 합니다.
+
+
+## 정책
+
+### Stage 1: 기본 기능
+
+**상품탐색**
+- 사용자는 상품을 검색할 수 있어야 합니다.
+- 사용자는 상품을 카테고리별로 탐색할 수 있어야 합니다.
 **장바구니**
-- 의류 상품 담기: 사용자는 의류 상품을 장바구니에 담을 수 있습니다.
-- 장바구니 목록 조회: 사용자는 장바구니에 담긴 의류 상품 목록을 조회하고, 수량 변경 및 상품을 삭제할 수 있습니다.
+- 사용자는 상품을 장바구니에 추가하고, 장바구니를 조회할 수 있어야 합니다.
+**주문**
+- 사용자는 상품을 주문하고 결제를 완료할 수 있어야 합니다.
+- 사용자는 주문 내역을 조회할 수 있어야 합니다.
 
-**주문 및 결제**
-- 주문 정보 입력: 사용자는 배송지 정보, 결제 방법, 배송 요청 사항 등을 입력합니다.
-- 결제 진행: 사용자는 선택한 결제 수단을 통해 결제를 진행합니다.
-- 주문 내역 조회: 사용자는 주문 내역을 조회하고, 출고 상태를 확인할 수 있습니다.
+### Stage 2: 추가 기능
 
-**의류 상품 후기 및 평점**
-- 의류 상품 후기 작성: 구매한 의류 상품에 대해 후기를 작성하고, 평점을 남길 수 있습니다.
-- 후기 목록 조회: 사용자는 의류 상품에 대한 다른 사용자들의 후기와 평점을 조회할 수 있습니다.
+**상품리뷰**
+- 사용자는 구매한 상품에 대해 리뷰를 작성할 수 있어야 합니다.
 
+**상품탐색 필터**
+- 검색 시 가격대나 색상, 사이즈 등을 기준으로 필터링할 수 있어야 합니다.
 
-## Spec
+### Stage 3: 고급 기능
 
-**프로젝트 구성**
-| Name | Version |
-|:---|:---|
-|Spring Boot | 2.7.3 |
-|Kotlin | |
-|Gradle | 7.5 |
-
-**개발환경**
-|Name | Desc|
-|:---|:---|
-|Architecture | Hexnagonal |
-|DB| H2 |
-
-**기본 의존성**
-| Name | Desc |
-|:---|:---|
-|H2| |
-
-**프로젝트 패키지 구조**
-| Name | Desc |
-|:---|:---|
-| | |
-
-## Goals
-- ✅ 멀티 모듈 구조 학습
-- ✅ Hexagonal 구조 학습
-- ✅ 마이크로서비스 단위 개발 학습 
-
-## 아래는 fork 이후 직접 작성해주세요.
-
-### :pushpin: 참여 팀원
-|     [팀원 닉네임](팀원-프로필-주소)      |
-|:----------------------------:|
-|  <img src="" width="100px">  |
-| BE, FE, IOS, ANDROID, DESIGN |
-|            한줄 설명             |
-
---- 
-### :screwdriver: 기술 스택
-<p align="center">
-<img src="https://img.shields.io/badge/TypeScript-569A31?style=for-the-badge&logo=JavaScript&logoColor=white">
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
-<img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white">
-<img src="https://img.shields.io/badge/Kotlin-2496ED?style=for-the-badge&logo=kotlin&logoColor=orange">
-<img src="https://img.shields.io/badge/ReactNative-2496ED?style=for-the-badge&logo=react&logoColor=white">
-</p>
-<p align="center">
-<img src="https://img.shields.io/badge/IOS-white?style=for-the-badge&logo=apple&logoColor=black">
-<img src="https://img.shields.io/badge/Android-green?style=for-the-badge&logo=android&logoColor=white">
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
-<img src="https://img.shields.io/badge/Testing Library-E33332?style=for-the-badge&logo=testingLibrary&logoColor=white">
-<img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=reactRouter&logoColor=white">
-</p>
-<p align="center">
-<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
-<img src="https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=JUnit5&logoColor=white">
-<img src="https://img.shields.io/badge/mariaDB-003545?style=for-the-badge&logo=mariaDB&logoColor=white">
-<img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white"> 
-<img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=for-the-badge&logo=Amazon AWS&logoColor=white">
-</p>
-<p align="center">
-<img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white">
-<img src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=NGINX&logoColor=white">  
-<img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=Jenkins&logoColor=white"> 
-<img src="https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=SonarQube&logoColor=white"> 
-<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"> 
-</p>
-
-### 
+**할인/쿠폰**
+- 결제 시 할인율 적용이나 쿠폰 사용이 가능해야 합니다.
